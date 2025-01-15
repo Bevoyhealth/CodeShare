@@ -15,6 +15,13 @@
 - **Multi-Language Support**: Works with a wide range of programming languages.
 - **Custom Fonts** - Choose from a range of fonts to give your snippets a personalized touch.
 
+### 📝 **Challenges**
+
+1. Solve the bug described in the [issue #2](https://github.com/Bevoyhealth/CodeShare/issues/2)
+2. Add the feature described in [issue #1](https://github.com/Bevoyhealth/CodeShare/issues/1)
+3. (Now the fun part) - export the image of any snippet of code or algorithm that you find really interesting. This could be from any language, could be from any source - could be from your own code, could be from someone else's code, could be from a book, could be from a blog post, etc. Add it to your submission along with a markdown file explaining why you find it interesting. Files should be named `interesting_code_snippet.png` and `interesting_explanation.md` and should be in the root of your fork.
+
+
 ### 📝 **Submission Instructions**
 
 1. Fork this repository
