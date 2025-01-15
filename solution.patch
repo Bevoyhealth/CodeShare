@@ -1,0 +1,155 @@
+diff --git a/lib/app/components/code_editor/code_field/code_field.dart b/lib/app/components/code_editor/code_field/code_field.dart
+index e5fd760..6e21260 100644
+--- a/lib/app/components/code_editor/code_field/code_field.dart
++++ b/lib/app/components/code_editor/code_field/code_field.dart
+@@ -1,6 +1,6 @@
+ import 'package:flutter/material.dart';
+ import 'package:print_script/app/app_controller.dart';
+-
++import 'package:flutter/services.dart';
+ import '../window_header/window_header.dart';
+ import '../code_theme/code_theme.dart';
+ import '../gutter/gutter.dart';
+@@ -8,6 +8,7 @@ import '../line_numbers/gutter_style.dart';
+ import 'code_controller.dart';
+ import 'default_styles.dart';
+ import 'js_workarounds/js_workarounds.dart';
++import 'package:print_script/app/enums/language/enum_languages.dart';
+ 
+ class CodeField extends StatefulWidget {
+   /// {@macro flutter.widgets.textField.minLines}
+@@ -129,6 +130,52 @@ class _CodeFieldState extends State<CodeField> {
+   }
+ 
+   KeyEventResult _onKeyEvent(FocusNode node, KeyEvent event) {
++    // Handle tab key for indentation
++    if (event is KeyDownEvent && event.logicalKey.keyLabel == 'Tab') {
++      final currentText = widget.controller.text;
++      final selection = widget.controller.selection;
++
++      // Get the selected language
++      LanguageTypes selectedLanguage = Controller.selectedLanguage.value;
++      // Get the indent size for the selected language
++      int indentSize = indentSizeMap[selectedLanguage] ?? 4;
++
++      // Figure out the number of spaces already at the cursor position
++      int currentIndent = 0;
++      for (int i = selection.start; i > 0; i--) {
++        if (currentText[i - 1] == ' ') {
++          currentIndent++;
++        } else {
++          break;
++        }
++      }
++
++      // Leave existing levels of indentation as-is, only add new levels
++      currentIndent = currentIndent % indentSize;
++
++      // Calculate the number of spaces to insert
++      int spacesToInsert = indentSize - currentIndent;
++
++      // Create the indent string
++      String indent = ' ' * spacesToInsert;
++
++      // Insert tab at cursor position
++      final newText = currentText.replaceRange(
++        selection.start,
++        selection.end,
++        indent,
++      );
++
++      widget.controller.value = TextEditingValue(
++        text: newText,
++        selection: TextSelection.collapsed(
++          offset: selection.start + spacesToInsert,
++        ),
++      );
++
++      return KeyEventResult.handled;
++    }
++
+     return widget.controller.onKey(event);
+   }
+ 
+@@ -227,7 +274,6 @@ class _CodeFieldState extends State<CodeField> {
+     final defaultTextStyle = TextStyle(
+       color: styles?[rootKey]?.color ?? DefaultStyles.textColor,
+       fontSize: themeData.textTheme.titleMedium?.fontSize,
+-      height: DefaultStyles.lineHeight,
+     );
+ 
+     textStyle = defaultTextStyle.merge(widget.textStyle);
+@@ -252,6 +298,7 @@ class _CodeFieldState extends State<CodeField> {
+       autocorrect: false,
+       enabled: widget.enabled,
+       onChanged: widget.onChanged,
++      onTapOutside: (event) => _focusNode!.unfocus(),
+     );
+ 
+     final editingField = Theme(
+diff --git a/lib/app/enums/language/enum_languages.dart b/lib/app/enums/language/enum_languages.dart
+index 249754d..fe22d94 100644
+--- a/lib/app/enums/language/enum_languages.dart
++++ b/lib/app/enums/language/enum_languages.dart
+@@ -166,6 +166,61 @@ Map<LanguageTypes, dynamic> builtinLanguagesMap = {
+   LanguageTypes.yaml: yaml,
+ };
+ 
++Map<LanguageTypes, int> indentSizeMap = {
++  LanguageTypes.arduino: 2,
++  LanguageTypes.bash: 2,
++  LanguageTypes.basic: 2,
++  LanguageTypes.brainfuck: 2,
++  LanguageTypes.clojure: 2,
++  LanguageTypes.cmake: 2,
++  LanguageTypes.coffeescript: 2,
++  LanguageTypes.cpp: 4,
++  LanguageTypes.cs: 4,
++  LanguageTypes.css: 2,
++  LanguageTypes.dart: 2,
++  LanguageTypes.delphi: 2,
++  LanguageTypes.django: 4,
++  LanguageTypes.dsconfig: 2,
++  LanguageTypes.elixir: 2,
++  LanguageTypes.erlang: 2,
++  LanguageTypes.fortran: 6,
++  LanguageTypes.fsharp: 4,
++  LanguageTypes.go: 2,
++  LanguageTypes.gradle: 4,
++  LanguageTypes.groovy: 4,
++  LanguageTypes.haskell: 2,
++  LanguageTypes.java: 4,
++  LanguageTypes.javascript: 2,
++  LanguageTypes.json: 2,
++  LanguageTypes.kotlin: 4,
++  LanguageTypes.lua: 2,
++  LanguageTypes.makefile: 4,
++  LanguageTypes.markdown: 4,
++  LanguageTypes.matlab: 2,
++  LanguageTypes.objectivec: 4,
++  LanguageTypes.perl: 4,
++  LanguageTypes.pgsql: 4,
++  LanguageTypes.php: 4,
++  LanguageTypes.plaintext: 4,
++  LanguageTypes.powershell: 4,
++  LanguageTypes.processing: 2,
++  LanguageTypes.python: 4,
++  LanguageTypes.r: 2,
++  LanguageTypes.ruby: 2,
++  LanguageTypes.rust: 4,
++  LanguageTypes.scala: 2,
++  LanguageTypes.scss: 2,
++  LanguageTypes.shell: 2,
++  LanguageTypes.sql: 4,
++  LanguageTypes.swift: 4,
++  LanguageTypes.typescript: 2,
++  LanguageTypes.vbnet: 4,
++  LanguageTypes.vbscript: 4,
++  LanguageTypes.xml: 2,
++  LanguageTypes.xquery: 2,
++  LanguageTypes.yaml: 2,
++};
++
+ extension BuiltinLanguageTypeExtension on LanguageTypes {
+   String get cleanName {
+     return toString()
