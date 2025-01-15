@@ -60,3 +60,6 @@ assets/icon_set/
 lib/.tmp
 temp.*
 diff.txt
+
+# Solution files
+solution.patch

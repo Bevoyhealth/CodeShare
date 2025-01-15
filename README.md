@@ -15,6 +15,17 @@
 - **Multi-Language Support**: Works with a wide range of programming languages.
 - **Custom Fonts** - Choose from a range of fonts to give your snippets a personalized touch.
 
+### 📝 **Submission Instructions**
+
+1. Fork this repository
+2. Make your fork private
+3. Add @parthjshah95 as a collaborator to your private fork
+4. Implement your solution
+5. Push your changes
+6. Notify us when complete
+
+**Note:** Please ensure your fork is private to maintain the confidentiality of your solution.
+
 ### 💻 **Getting Started Locally**
 
 To run **CodeShare** locally using Flutter Web, follow these steps:
