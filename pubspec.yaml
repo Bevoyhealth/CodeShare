@@ -25,7 +25,7 @@ dependencies:
   flutter:
     sdk: flutter
   responsive_builder:
-  shadcn_ui:
+  shadcn_ui: 0.13.0
   icons_plus:
   cupertino_icons: ^1.0.8
   path:
