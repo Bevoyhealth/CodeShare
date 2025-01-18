@@ -33,13 +33,14 @@
 1. Fork this repository
 2. Make your fork private
 3. Add @parthjshah95 as a collaborator to your private fork
-4. Implement your solution for the feature #1
-5. Push the commits when done, so that we know when you finished the feature
-6. If you still have time, solve the bug #2
-7. Push your fix
-8. Add a screenshot of your favourite code snippet and a markdown file explaining why you find it interesting
-9. Push your changes
-10. Notify us when complete
+4. For the following steps, please keep a thought diary with timestamps, where you record your current understanding and your next steps roughly every 20 minutes or so. The intention is to get an insight into your way of thinking, and will help us evaluate even if you don't finish the exercise in time.
+5. Implement your solution for the feature desribed in [issue #1](https://github.com/Bevoyhealth/CodeShare/issues/1)
+6. Push the commits when done, so that we know when you finished the feature
+7. If you still have time, solve the bug described in [issue #2](https://github.com/Bevoyhealth/CodeShare/issues/2)
+8. Push your fix
+9. Add a screenshot of your favourite code snippet and a markdown file explaining why you find it interesting to the root of your fork as `interesting_code_snippet.png` and `interesting_explanation.md`.
+10. Push your changes
+11. Notify us when complete
 
 **Note:** Please ensure your fork is private to maintain the confidentiality of your solution.
 
