@@ -92,44 +92,6 @@ extension TextEditingValueExtension on TextEditingValue {
     );
   }
 
-  TextEditingValue tabsToSpaces(int spaceCount) {
-    final replacedBefore = beforeSelection.tabsToSpaces(spaceCount);
-    final replacedSelected = selected.tabsToSpaces(spaceCount);
-    final replacedAfter = afterSelection.tabsToSpaces(spaceCount);
-
-    final finalText = replacedBefore + replacedSelected + replacedAfter;
-
-    return TextEditingValue(
-      text: finalText,
-      selection: _getSelectionFromSubstrings(
-        replacedBefore,
-        replacedSelected,
-        replacedAfter,
-      ),
-      composing: composing,
-    );
-  }
-
-  TextSelection _getSelectionFromSubstrings(
-    String beforeSelection,
-    String inSelection,
-    String afterSelection,
-  ) {
-    if (selection.baseOffset == -1 || selection.extentOffset == -1) {
-      return const TextSelection.collapsed(offset: -1);
-    }
-
-    final baseOffset = beforeSelection.length;
-    final extentOffset = baseOffset + inSelection.length;
-
-    final result = selection.copyWith(
-      baseOffset: baseOffset,
-      extentOffset: extentOffset,
-    );
-
-    return selection.isSelectionNormalized ? result : result.reversed;
-  }
-
   String get beforeSelection {
     if (selection.baseOffset == -1 || selection.extentOffset == -1) {
       return '';

@@ -18,8 +18,9 @@
 ### 📝 **Challenges**
 
 1. Add the feature described in [issue #1](https://github.com/Bevoyhealth/CodeShare/issues/1)
-   - Start by creating a Specification document for feature #1. How should the tab key function? What are spcific scenarios and behaviors that should be supported? We want to match typical text editors behavior. Add it to the root of your fork as `specification.md`.
+   - How should the tab key function? What are specific scenarios and behaviors that should be supported? We want to match typical text editors behavior.
    - Implement your solution for the feature #1
+   - Speed of execution is more important than the quality of the code, for this exercise. We don't expect you to know the idiomatic way to do this in dart, or the best practices for the language.
    - Push the commits when done, so that we know when you finished the feature
 2. Solve the bug described in the [issue #2](https://github.com/Bevoyhealth/CodeShare/issues/2)
    - Implement your solution for the bug #2

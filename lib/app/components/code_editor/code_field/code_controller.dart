@@ -105,7 +105,7 @@ class CodeController extends TextEditingController {
     }
   }
 
-  void setCode(String text){
+  void setCode(String text) {
     _code = _createCode(text);
     fullText = text;
     notifyListeners();
@@ -122,8 +122,6 @@ class CodeController extends TextEditingController {
   }
 
   void setLanguage(Mode? language) {
-
-
     if (language != null) {
       _languageId = language.hashCode.toString();
       highlight.registerLanguage(_languageId, language);
@@ -231,10 +229,6 @@ class CodeController extends TextEditingController {
             selection: val.selection,
           );
         }
-      }
-
-      if (_isTabReplacementEnabled) {
-        newValue = newValue.tabsToSpaces(params.tabSpaces);
       }
 
       final editResult = _getEditResultNotBreakingReadOnly(newValue);
