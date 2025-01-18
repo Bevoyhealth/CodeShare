@@ -18,7 +18,12 @@
 ### 📝 **Challenges**
 
 1. Add the feature described in [issue #1](https://github.com/Bevoyhealth/CodeShare/issues/1)
+   - Start by creating a Specification document for feature #1. How should the tab key function? What are spcific scenarios and behaviors that should be supported? We want to match typical text editors behavior. Add it to the root of your fork as `specification.md`.
+   - Implement your solution for the feature #1
+   - Push the commits when done, so that we know when you finished the feature
 2. Solve the bug described in the [issue #2](https://github.com/Bevoyhealth/CodeShare/issues/2)
+   - Implement your solution for the bug #2
+   - Push the commits when done, so that we know when you finished the bug
 3. (Now the fun part) - export the image of any snippet of code or algorithm that you find really interesting. This could be from any language, could be from any source - could be from your own code, could be from someone else's code, could be from a book, could be from a blog post, etc. Add it to your submission along with a markdown file explaining why you find it interesting. Files should be named `interesting_code_snippet.png` and `interesting_explanation.md` and should be in the root of your fork.
 
 
