@@ -39,7 +39,7 @@
 7. If you still have time, solve the bug described in [issue #2](https://github.com/Bevoyhealth/CodeShare/issues/2)
 8. Push your fix
 9. Add a screenshot of your favourite code snippet and a markdown file explaining why you find it interesting to the root of your fork as `interesting_code_snippet.png` and `interesting_explanation.md`.
-10. Push your changes
+10. Create a pull request into your own private repository and add @parthjshah95 as a reviewer.
 11. Notify us when complete
 
 **Note:** Please ensure your fork is private to maintain the confidentiality of your solution.
